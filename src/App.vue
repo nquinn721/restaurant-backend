@@ -8,8 +8,7 @@ v-app
       persistent
       floating 
       )
-      v-app-bar-nav-icon(color="white" style="height: 63px;" width="55px")
-      v-list.py-0(dense='' nav='')
+      v-list
         v-list-item
           v-list-item-icon
             v-icon(color="white") fas fa-user
