@@ -1,9 +1,22 @@
 <template lang="pug">
-#app
-  #nav
-    router-link( to="/") Home|
-    router-link( to="/about") About
-  router-view
+v-app
+  v-main
+    v-navigation-drawer(
+      v-model='drawer' 
+      color='primary'  
+      absolute
+      persistent
+      floating 
+      )
+      v-app-bar-nav-icon(color="white" style="height: 63px;" width="55px")
+      v-list.py-0(dense='' nav='')
+        v-list-item
+          v-list-item-icon
+            v-icon(color="white") fas fa-user
+          v-list-item-content
+            v-list-item-title Orders
+
+    router-view
 </template>
 <script>
 import { MainStore } from "./store/Main.mobx";
@@ -11,6 +24,7 @@ export default {
   data() {
     return {
       MainStore,
+      drawer: true,
     };
   },
 };
@@ -24,16 +38,9 @@ export default {
   color: #2c3e50;
 }
 
-#nav {
+.v-navigation-drawer {
   padding: 30px;
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+  color: white;
 }
 </style>
