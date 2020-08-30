@@ -1,30 +1,48 @@
 <template lang="pug">
 v-app
+  v-navigation-drawer(
+    v-model="drawer"
+    app
+    floating 
+    fixed
+    persistent 
+    dark
+    )
+    v-list(dense='')
+      v-list-item(link to="orders")
+        v-list-item-action
+          v-icon(size=14) far fa-shopping-cart
+        v-list-item-content
+          v-list-item-title Orders
+      v-list-item(link to="categories")
+        v-list-item-action
+          v-icon(size=14) far fa-clipboard
+        v-list-item-content
+          v-list-item-title Categories
+  v-app-bar(app clipped-left dark)
+    v-app-bar-nav-icon(@click.stop='drawer = !drawer')
+    v-toolbar-title Application
   v-main
-    v-navigation-drawer(
-      v-model='drawer' 
-      color='primary'  
-      absolute
-      persistent
-      floating 
-      )
-      v-list
-        v-list-item
-          v-list-item-icon
-            v-icon(color="white") fas fa-user
-          v-list-item-content
-            v-list-item-title Orders
+    router-view 
+  v-footer(app='')
+    span &copy; {{ new Date().getFullYear() }}
 
-    router-view
+ 
 </template>
 <script>
 import { MainStore } from "./store/Main.mobx";
 export default {
   data() {
     return {
-      MainStore,
       drawer: true,
     };
+  },
+  computed: {
+    bg() {
+      return this.background
+        ? "https://cdn.vuetifyjs.com/images/backgrounds/bg-2.jpg"
+        : undefined;
+    },
   },
 };
 </script>

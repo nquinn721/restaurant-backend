@@ -7,4 +7,4 @@ class MainMobx {
 
 export const MainStore = new MainMobx();
 Loader.registerStore(MainStore.items, "items");
-Loader.init();
+// Loader.init();
