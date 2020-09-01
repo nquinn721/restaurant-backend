@@ -1,4 +1,13 @@
 steps:
-  - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['app', 'deploy']
-timeout: '1600s'
+  # Build the container image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'us.gcr.io/restaurant-backend-288003/app-engine-tmp', '.']
+  # Push the container image to Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'us.gcr.io/restaurant-backend-288003/app-engine-tmp']
+  # Deploy container image to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args: ['run', 'deploy', 'SERVICE-NAME', '--image', 'us.gcr.io/restaurant-backend-288003/app-engine-tmp', '--region', 'REGION', '--platform', 'managed']
+  images:
+  - us.gcr.io/restaurant-backend-288003/app-engine-tmp
