@@ -18,7 +18,7 @@ v-app
         v-list-item-action
           v-icon(size=14) far fa-clipboard
         v-list-item-content
-          v-list-item-title Categoriessss
+          v-list-item-title Categories
   v-app-bar(app clipped-left dark)
     v-app-bar-nav-icon(@click.stop='drawer = !drawer')
     v-toolbar-title Application
