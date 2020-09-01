@@ -9,9 +9,7 @@ class MainMobx {
   constructor() {
     this.orders.refreshData();
     Socket.on("order", (order: any) => {
-      console.log("got order", order);
-
-      this.orders.addObject(order);
+      this.orders.objects = [order].concat(this.orders.objects);
     });
   }
 }
