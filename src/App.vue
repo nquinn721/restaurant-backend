@@ -13,7 +13,7 @@ v-app
         v-list-item-action
           v-icon(size=14) far fa-shopping-cart
         v-list-item-content
-          v-list-item-title Orders
+          v-list-item-title Ordersss
       v-list-item(link to="categories")
         v-list-item-action
           v-icon(size=14) far fa-clipboard
