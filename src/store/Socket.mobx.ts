@@ -1,8 +1,8 @@
 import io from "socket.io-client";
 
 class SocketStore {
-  socket = io("https://restaurant-server-288018.ue.r.appspot.com/");
-  // socket = io(Service.baseUrl);
+  // socket = io("https://restaurant-server-288018.ue.r.appspot.com/");
+  socket = io("http://localhost:8080");
 
   emit(name: string, data: object) {
     this.socket.emit(name, data);
