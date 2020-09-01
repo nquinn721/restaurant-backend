@@ -1,7 +1,7 @@
 <template lang="pug">
 div
   h1 Orders
-  div(v-for="item in MainStore.items.objects" :key="item.id") {{item.name}}
+  div(v-for="item in MainStore.orders.objects" :key="item.id") {{item.name}}
 
 </template>
 

@@ -5,6 +5,7 @@ import router from "./router";
 Vue.config.productionTip = false;
 import vuetify from "./plugins/vuetify";
 import "./assets/base.scss";
+import "./store/Socket.mobx";
 
 new Vue({
   router,
