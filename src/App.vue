@@ -34,7 +34,7 @@ import { MainStore } from "./store/Main.mobx";
 export default {
   data() {
     return {
-      drawer: true,
+      drawer: false,
     };
   },
   computed: {
