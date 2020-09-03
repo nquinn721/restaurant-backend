@@ -10,4 +10,10 @@ export class Mod extends Model {
   get COST() {
     return `$${this.cost}`;
   }
+
+  getDataFromStores() {
+    this.item = MainStore.items.getByIdSync(
+      typeof this.item === "number" ? this.item : this.item.id
+    );
+  }
 }
