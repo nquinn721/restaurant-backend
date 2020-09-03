@@ -8,7 +8,7 @@ export class Mod extends Model {
   item: any = {};
 
   get COST() {
-    return `$${this.cost}`;
+    return `$${this.cost.toFixed(2)}`;
   }
 
   getDataFromStores() {
