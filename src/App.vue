@@ -19,6 +19,16 @@ v-app
           v-icon(size=14) far fa-clipboard
         v-list-item-content
           v-list-item-title Categories
+      v-list-item(link to="items")
+        v-list-item-action
+          v-icon(size=14) far fa-list
+        v-list-item-content
+          v-list-item-title Items
+      v-list-item(link to="sides")
+        v-list-item-action
+          v-icon(size=14) far fa-pizza
+        v-list-item-content
+          v-list-item-title Sides
   v-app-bar(app clipped-left dark)
     v-app-bar-nav-icon(@click.stop='drawer = !drawer')
     v-toolbar-title Application
