@@ -4,6 +4,7 @@ import Orders from "../views/Orders.vue";
 import Categories from "../views/Categories.vue";
 import Items from "../views/Items.vue";
 import Sides from "../views/Sides.vue";
+import Mods from "../views/Mods.vue";
 
 Vue.use(VueRouter);
 
@@ -27,6 +28,11 @@ const routes: Array<RouteConfig> = [
     path: "/sides",
     name: "Sides",
     component: Sides,
+  },
+  {
+    path: "/mods",
+    name: "Modifiers",
+    component: Mods,
   },
 ];
 

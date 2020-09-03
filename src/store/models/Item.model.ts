@@ -12,6 +12,6 @@ export class Item extends Model {
   }
 
   getDataFromStores() {
-    this.category = MainStore.categories.getByIdSync(this.category.id);
+    this.category = MainStore.categories.getByIdSync(this.category?.id);
   }
 }

@@ -29,6 +29,11 @@ v-app
           v-icon(size=14) far fa-pizza
         v-list-item-content
           v-list-item-title Sides
+      v-list-item(link to="mods")
+        v-list-item-action
+          v-icon(size=14) far fa-paperclip
+        v-list-item-content
+          v-list-item-title Modifiers
   v-app-bar(app clipped-left dark)
     v-app-bar-nav-icon(@click.stop='drawer = !drawer')
     v-toolbar-title Application
