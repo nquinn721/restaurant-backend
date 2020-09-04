@@ -39,6 +39,7 @@ import { MainStore } from "../store/Main.mobx";
     completeOrder(order) {
       order.status = "complete";
       order.save();
+      MainStore.orders.remove(order);
     },
   },
 })
