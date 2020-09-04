@@ -7,13 +7,16 @@ import { Item } from "./models/Item.model";
 import { observable } from "mobx";
 import { Side } from "./models/Side.model";
 import { Mod } from "./models/Mod.model";
-Service.setBaseUrl("https://restaurant-server-288018.ue.r.appspot.com/");
+import { ModType } from "./models/ModType.model";
+// Service.setBaseUrl("https://restaurant-server-288018.ue.r.appspot.com/");
+Service.setBaseUrl("http://localhost:8080/");
 class MainMobx {
   orders = new Store(Order, "orders");
   categories = new Store(Category, "categories");
   items = new Store(Item, "items");
   sides = new Store(Side, "sides");
   mods = new Store(Mod, "mods");
+  modTypes = new Store(ModType, "modtypes");
 
   constructor() {
     Socket.on("order", (order: any) => {
@@ -29,5 +32,6 @@ Loader.registerStores([
   MainStore.items,
   MainStore.sides,
   MainStore.mods,
+  MainStore.modTypes,
 ]);
 Loader.init();

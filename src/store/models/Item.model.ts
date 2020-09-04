@@ -4,10 +4,11 @@ import { Mod } from "./Mod.model";
 
 export class Item extends Model {
   route = "item";
-  getParams = { join: ["category||id"] };
+  getParams = { sort: "id,ASC", join: ["category||id", "mods"] };
   category: any = {};
   cost = 0;
   mods: Mod[] = [];
+  name = "";
 
   get COST() {
     return `$${this.cost.toFixed(2)}`;

@@ -9,7 +9,7 @@ v-form(ref="form" v-model="valid")
         v-col.pr-10(cols=12 sm=6)
           v-text-field(label='Name' v-model="store.current.name" outlined dense)
         v-col.pr-10(cols=12 sm=6)
-          v-text-field(label='Type' v-model="store.current.type" outlined dense)
+          v-select(label='Type' v-model="store.current.type" :items="MainStore.modTypes.objects" outlined dense item-text="name" item-value="id")
       v-row
         v-col.pr-10(cols=12 sm=6)
           v-text-field(label='Cost' v-model="store.current.cost" outlined dense)
