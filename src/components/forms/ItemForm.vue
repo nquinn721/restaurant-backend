@@ -15,6 +15,16 @@ v-form(ref="form" v-model="valid")
       v-row
         v-col(cols=12)
           v-text-field(label="Description" v-model="store.current.description" outlined dense)
+      h3(v-if="store.current.mods.length") Modifications
+      div(v-for="mod in store.current.mods" :key="mod.id")
+        v-row
+          v-col.pr-10(cols=12 sm=4)
+            v-text-field(label='Name' v-model="mod.name" outlined dense)
+          v-col.pr-10(cols=12 sm=4)
+            v-select(label='Type' v-model="mod.type" :items="Types" outlined dense)
+          v-col.pr-10(cols=12 sm=4)
+            v-text-field(label='Cost' v-model="mod.cost" outlined dense)
+      v-btn(color="primary" @click="store.current.mods.push({})") Add modification
   v-card-actions
     v-spacer
     v-btn(color='blue darken-1' text='' @click='close()') Cancel
@@ -23,6 +33,7 @@ v-form(ref="form" v-model="valid")
 </template>
 <script>
 import { MainStore } from "@/store/Main.mobx";
+import { Types } from "@/store/models/Mod.model";
 export default {
   props: ["title", "store"],
   data() {
@@ -30,6 +41,7 @@ export default {
       valid: true,
       MainStore,
       colorMenu: false,
+      Types,
     };
   },
   methods: {

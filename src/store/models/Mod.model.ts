@@ -1,6 +1,7 @@
 import { Model } from "mobx-store-model/lib";
 import { MainStore } from "../Main.mobx";
 
+export const Types = ["toppings"];
 export class Mod extends Model {
   route = "modification";
   getParams: any = { join: "item||name" };
