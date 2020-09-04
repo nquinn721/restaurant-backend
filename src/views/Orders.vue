@@ -2,14 +2,21 @@
 v-container
   h1 Orders
   v-card.pa-5.ma-5.justify-space-between.d-flex(v-for="order in MainStore.orders.objects" :key="order.id") 
-    div(v-for="item in order.items" :key="item.id") 
+    .order(v-for="item in order.items" :key="item.id") 
     
-      | {{item.item.name}}
-      div(v-for="mod in item.mods" :key="mod.id") Mod: {{mod.modification.name}}
-      div(v-for="side in item.sides" :key="side.id") Side: {{side.side.name}}
+      div.mr-10
+        h4 Item
+        div {{item.item.name}}
+      div.mr-10
+        h4 Modifications
+        div(v-for="mod in item.mods" :key="mod.id") {{mod.modification.name}}
+      div
+        h4 Sides
+        div(v-for="side in item.sides" :key="side.id") {{side.side.name}}
     div
       div.mb-5(style="color: #999;text-align:right") # {{order.id}}
-      v-btn(color="primary") Complete
+      v-btn(color="warning" v-if="order.isRecieved" @click="startOrder(order)") Start Order
+      v-btn(color="primary" v-else @click="completeOrder(order)") Complete Order
 
 </template>
 
@@ -24,6 +31,22 @@ import { MainStore } from "../store/Main.mobx";
       MainStore,
     };
   },
+  methods: {
+    startOrder(order) {
+      order.status = "started";
+      order.save();
+    },
+    completeOrder(order) {
+      order.status = "complete";
+      order.save();
+    },
+  },
 })
 export default class Home extends Vue {}
 </script>
+<style lang="scss">
+.order {
+  display: flex;
+  justify-content: space-between;
+}
+</style>
