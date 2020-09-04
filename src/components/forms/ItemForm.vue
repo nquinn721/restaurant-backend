@@ -21,7 +21,7 @@ v-form(ref="form" v-model="valid")
           v-col.pr-10(cols=12 sm=4)
             v-text-field(label='Name' v-model="mod.name" outlined dense)
           v-col.pr-10(cols=12 sm=4)
-            v-select(label='Type' v-model="mod.type" :items="MainStore.modTypes.objects" outlined dense)
+            v-select(label='Type' v-model="mod.type" :items="MainStore.modTypes.objects" outlined dense item-text="name" item-value="id")
           v-col.pr-10(cols=12 sm=4)
             v-text-field(label='Cost' v-model="mod.cost" outlined dense)
       v-btn(color="primary" @click="store.current.mods.push({})") Add modification
@@ -34,11 +34,12 @@ v-form(ref="form" v-model="valid")
 <script>
 import { MainStore } from "@/store/Main.mobx";
 export default {
-  props: ["title", "store"],
+  props: ["title"],
   data() {
     return {
       valid: true,
       MainStore,
+      store: MainStore.items,
       colorMenu: false,
     };
   },

@@ -5891,10 +5891,10 @@ mobx-persist@^0.4.1:
   dependencies:
     serializr "^1.1.11"
 
-mobx-store-model@^0.7.30:
-  version "0.7.30"
-  resolved "https://registry.yarnpkg.com/mobx-store-model/-/mobx-store-model-0.7.30.tgz#7af857c8833cd8ce1540927917deb0a3b1792142"
-  integrity sha512-tzISHd8Aei+VY4/LobWzY3V9Cnv/SejLAUIMp/nlXqLU7IoML2xrusOE+zqLMHxwpWObaNmU8psr2ZaU+qzxIA==
+mobx-store-model@^0.7.34:
+  version "0.7.34"
+  resolved "https://registry.yarnpkg.com/mobx-store-model/-/mobx-store-model-0.7.34.tgz#574673358e39ff94bccd66da3ac9f198919ac51c"
+  integrity sha512-XTSvhuQRcp6cUU5oyIlCedMhsRdopAaOg0SbsM2aRAVUZakBHnb+oBsTdds2s+AkNLHWKluxSPJwCbdwGEa/sQ==
   dependencies:
     axios "^0.19.2"
     localforage "^1.9.0"

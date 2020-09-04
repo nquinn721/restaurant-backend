@@ -9,27 +9,27 @@ v-app
     dark
     )
     v-list(dense='')
-      v-list-item(link to="orders")
+      v-list-item(link to="/orders")
         v-list-item-action
           v-icon(size=14) far fa-shopping-cart
         v-list-item-content
           v-list-item-title Orders
-      v-list-item(link to="categories")
+      v-list-item(link to="/categories")
         v-list-item-action
           v-icon(size=14) far fa-clipboard
         v-list-item-content
           v-list-item-title Categories
-      v-list-item(link to="items")
+      v-list-item(link to="/items")
         v-list-item-action
           v-icon(size=14) far fa-list
         v-list-item-content
           v-list-item-title Items
-      v-list-item(link to="sides")
+      v-list-item(link to="/sides")
         v-list-item-action
           v-icon(size=14) far fa-pizza
         v-list-item-content
           v-list-item-title Sides
-      v-list-item(link to="mods")
+      v-list-item(link to="/mods")
         v-list-item-action
           v-icon(size=14) far fa-paperclip
         v-list-item-content

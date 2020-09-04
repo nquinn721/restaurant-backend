@@ -18,22 +18,24 @@ v-form(ref="form" v-model="valid")
 </template>
 <script>
 import { log } from "util";
+import { MainStore } from "@/store/Main.mobx";
 export default {
-  props: ["title", "store"],
+  props: ["title"],
   data() {
     return {
       valid: true,
       colorMenu: false,
+      store: MainStore.modTypes,
     };
   },
   methods: {
     close() {
-      this.store.resetCurrent();
+      this.store?.resetCurrent();
       this.$emit("close");
     },
     async save(data) {
       const result = await this.store.saveCurrent();
-      console.log(this.store.objects.length);
+
       if (!result.error) {
         this.$refs.form.resetValidation();
         this.$emit("close");

@@ -1,6 +1,6 @@
 <template lang="pug">
 v-container
-  BaseFormPage(title="Items" :store="MainStore.items" :headers="headers" form="FormsItemForm" searchBy="name" width=1200)
+  BaseFormPage(title="Items" :store="MainStore.items" :headers="headers" form="FormsItemForm" searchBy="name" width=1200 page="item")
 </template>
 <script>
 import { MainStore } from "@/store/Main.mobx";

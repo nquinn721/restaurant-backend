@@ -29,9 +29,9 @@ export const MainStore = new MainMobx();
 Loader.registerStores([
   MainStore.orders,
   MainStore.categories,
+  MainStore.mods,
   MainStore.items,
   MainStore.sides,
-  MainStore.mods,
   MainStore.modTypes,
 ]);
 Loader.init();

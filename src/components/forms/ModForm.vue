@@ -26,12 +26,13 @@ v-form(ref="form" v-model="valid")
 <script>
 import { MainStore } from "@/store/Main.mobx";
 export default {
-  props: ["title", "store"],
+  props: ["title"],
   data() {
     return {
       valid: true,
       colorMenu: false,
       MainStore,
+      store: MainStore.mods,
     };
   },
   methods: {
