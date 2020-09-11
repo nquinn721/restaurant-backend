@@ -6,8 +6,10 @@ v-form(ref="form" v-model="valid")
   v-card-text
     v-container
       v-row
-        v-col.pr-10(cols=12)
+        v-col.pr-10(cols=6)
           v-text-field(label='Name' required v-model="store.current.name" outlined dense)
+        v-col.pr-10(cols=6)
+          v-file-input(accept="image/*" label="Patient image" outlined dense @change="v => file = v")
           
      
   v-card-actions
@@ -18,12 +20,14 @@ v-form(ref="form" v-model="valid")
 </template>
 <script>
 import { log } from "util";
+import { Service } from "mobx-store-model/lib";
 export default {
   props: ["title", "store"],
   data() {
     return {
       valid: true,
       colorMenu: false,
+      file: false,
     };
   },
   methods: {
@@ -32,13 +36,25 @@ export default {
       this.$emit("close");
     },
     async save(data) {
-      const result = await this.store.saveCurrent();
-      console.log(this.store.objects.length);
-      if (!result.error) {
-        this.$refs.form.resetValidation();
-        this.$emit("close");
-        this.$emit("save");
+      if (this.file) {
+        const reader = new FileReader();
+
+        const fd = new FormData();
+        fd.append("image", this.file);
+        console.log("uploading image", fd);
+        const d = await Service.post("/category/img", fd);
+        reader.readAsDataURL(this.file);
+        // reader.onload = async img =>
+        //   (this.store.current.img = img.target.result);
+        // this.file = null;
       }
+
+      // const result = await this.store.saveCurrent();
+      // if (!result.error) {
+      //   this.$refs.form.resetValidation();
+      //   this.$emit("close");
+      //   this.$emit("save");
+      // }
     },
   },
 };
