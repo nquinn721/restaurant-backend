@@ -44,17 +44,18 @@ export default {
         console.log("uploading image", fd);
         const d = await Service.post("/category/img", fd);
         reader.readAsDataURL(this.file);
-        // reader.onload = async img =>
-        //   (this.store.current.img = img.target.result);
-        // this.file = null;
+        // reader.onload = async (img) =>
+        //   (this.store.current.image = img.target.result);
+        this.store.current.image = d;
+        this.file = null;
       }
 
-      // const result = await this.store.saveCurrent();
-      // if (!result.error) {
-      //   this.$refs.form.resetValidation();
-      //   this.$emit("close");
-      //   this.$emit("save");
-      // }
+      const result = await this.store.saveCurrent();
+      if (!result.error) {
+        this.$refs.form.resetValidation();
+        this.$emit("close");
+        this.$emit("save");
+      }
     },
   },
 };

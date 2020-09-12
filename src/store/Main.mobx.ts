@@ -8,8 +8,11 @@ import { observable } from "mobx";
 import { Side } from "./models/Side.model";
 import { Mod } from "./models/Mod.model";
 import { ModType } from "./models/ModType.model";
-// Service.setBaseUrl("https://restaurant-server-288018.ue.r.appspot.com/");
-Service.setBaseUrl("http://localhost:8080/");
+Service.setBaseUrl(
+  process.env.NODE_ENV === "production"
+    ? "https://restaurant-server-288018.ue.r.appspot.com/"
+    : "http://localhost:8080/"
+);
 class MainMobx {
   orders = new Store(Order, "orders");
   categories = new Store(Category, "categories");
