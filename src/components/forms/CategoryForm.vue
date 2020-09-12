@@ -9,7 +9,7 @@ v-form(ref="form" v-model="valid")
         v-col.pr-10(cols=6)
           v-text-field(label='Name' required v-model="store.current.name" outlined dense)
         v-col.pr-10(cols=6)
-          v-file-input(accept="image/*" label="Patient image" outlined dense @change="v => file = v")
+          v-file-input(accept="image/*" label="Image" outlined dense @change="v => file = v")
           
      
   v-card-actions

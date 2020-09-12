@@ -5,8 +5,6 @@ export class Category extends Model {
   image = "";
 
   get IMAGE() {
-    return process.env.NODE_ENV === "production"
-      ? "https://restaurant-server-288018.ue.r.appspot.com/"
-      : "http://localhost:8080/" + this.image;
+    return "https://storage.cloud.google.com/restaurant-server/" + this.image;
   }
 }
