@@ -9,10 +9,10 @@ v-form(ref="form" v-model="valid")
         v-col.pr-10(cols=6)
           v-text-field( label='Name' required v-model="store.current.name" outlined dense)
         v-col.pr-10(cols=6)
-          v-file-input(v-if="createFile" v-model="file" accept="image/*" label="Image" outlined dense @change="v => file = v")
-          .ml-9.justify-space-between.align-center(v-if="!createFile" style="color: #777") 
+          .ml-9.justify-space-between.align-center(v-if="store.current.image && !createFile" style="color: #777") 
             | Current image: {{store.current.image}}
             v-btn.ml-5(color="primary" @click="createFile = true") Upload
+          v-file-input(v-else accept="image/*" label="Image" outlined dense @change="v => file = v")
           
      
   v-card-actions
@@ -31,7 +31,7 @@ export default {
       valid: true,
       colorMenu: false,
       file: false,
-      createFile: false,
+      createFile: false
     };
   },
   methods: {
@@ -52,6 +52,7 @@ export default {
         //   (this.store.current.image = img.target.result);
         this.store.current.image = d;
         this.file = null;
+        this.createFile = false;
       }
 
       const result = await this.store.saveCurrent();
@@ -60,8 +61,8 @@ export default {
         this.$emit("close");
         this.$emit("save");
       }
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>
