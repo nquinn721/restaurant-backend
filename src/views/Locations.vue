@@ -12,8 +12,14 @@ export default {
   data() {
     return {
       MainStore,
-      headers: [{ text: "Address", value: "address" }, { value: "actions" }],
-      modTypeHeaders: [{ text: "Name", value: "name" }, { value: "actions" }]
+      headers: [
+        { text: "Name", value: "name" },
+        { text: "Address", value: "address" },
+        { text: "City", value: "city" },
+        { text: "State", value: "state" },
+        { text: "Phone", value: "phone" },
+        { value: "actions" }
+      ]
     };
   }
 };

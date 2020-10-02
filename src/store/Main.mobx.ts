@@ -37,5 +37,6 @@ Loader.registerStores([
   MainStore.items,
   MainStore.sides,
   MainStore.modTypes,
+  MainStore.locations,
 ]);
 Loader.init();

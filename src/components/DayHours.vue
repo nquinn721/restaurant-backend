@@ -51,7 +51,7 @@ export default {
   },
   methods: {
     setOpen(item, day) {
-      let { prev } = this.item.getDay(day);
+      const { prev } = this.item.getDay(day);
 
       if (prev && item[day + "Open"]) {
         item[day + "Start"] = item[prev.start];

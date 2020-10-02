@@ -6,8 +6,19 @@ v-form(ref="form" v-model="valid")
   v-card-text
     v-container
       v-row
-        v-col.pr-10(cols=12)
-          v-text-field(label='Address' required v-model="store.current.name" outlined dense)
+        v-col(cols=4)
+          v-text-field(label='Name' required v-model="store.current.name" outlined dense)
+        v-col(cols=4)
+          v-text-field(label='Address' required v-model="store.current.address1" outlined dense)
+        v-col(cols=4)
+          v-text-field(label='City' required v-model="store.current.city" outlined dense)
+      v-row
+        v-col(cols=4)
+          v-text-field(label='State' required v-model="store.current.state" outlined dense)
+        v-col(cols=4)
+          v-text-field(label='Zip' required v-model="store.current.zip" outlined dense)
+        v-col(cols=4)
+          v-text-field(label='Phone' required v-model="store.current.phone" outlined dense)
       v-row
         v-col
           DayHours(:item="store.current")
