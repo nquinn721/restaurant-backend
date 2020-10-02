@@ -34,6 +34,11 @@ v-app
           v-icon(size=14) far fa-paperclip
         v-list-item-content
           v-list-item-title Modifiers
+      v-list-item(link to="/locations")
+        v-list-item-action
+          v-icon(size=14) far fa-building
+        v-list-item-content
+          v-list-item-title Locations
   v-app-bar(app clipped-left dark)
     v-app-bar-nav-icon(@click.stop='drawer = !drawer')
     v-toolbar-title Application
@@ -49,7 +54,7 @@ import { MainStore } from "./store/Main.mobx";
 export default {
   data() {
     return {
-      drawer: false,
+      drawer: false
     };
   },
   computed: {
@@ -57,8 +62,8 @@ export default {
       return this.background
         ? "https://cdn.vuetifyjs.com/images/backgrounds/bg-2.jpg"
         : undefined;
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss">

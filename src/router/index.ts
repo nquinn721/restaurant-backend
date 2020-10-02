@@ -6,6 +6,7 @@ import Items from "../views/Items.vue";
 import Item from "../views/Item.vue";
 import Sides from "../views/Sides.vue";
 import Mods from "../views/Mods.vue";
+import Locations from "../views/Locations.vue";
 
 Vue.use(VueRouter);
 
@@ -16,6 +17,7 @@ const routes: Array<RouteConfig> = [
   { path: "/item/:id", component: Item },
   { path: "/sides", component: Sides },
   { path: "/mods", component: Mods },
+  { path: "/locations", component: Locations },
 ];
 
 const router = new VueRouter({

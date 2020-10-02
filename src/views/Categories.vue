@@ -8,7 +8,7 @@ import { MainStore } from "@/store/Main.mobx";
 import BaseFormPage from "./templates/BaseFormPage";
 export default {
   components: {
-    BaseFormPage,
+    BaseFormPage
   },
   data() {
     return {
@@ -16,9 +16,9 @@ export default {
       headers: [
         { text: "Image", value: "img" },
         { text: "Name", value: "name" },
-        { value: "actions" },
-      ],
+        { value: "actions" }
+      ]
     };
-  },
+  }
 };
 </script>

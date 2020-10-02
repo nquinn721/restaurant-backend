@@ -4,10 +4,10 @@ import { Service } from "mobx-store-model";
 import { Socket } from "./Socket.mobx";
 import { Category } from "./models/Category.model";
 import { Item } from "./models/Item.model";
-import { observable } from "mobx";
 import { Side } from "./models/Side.model";
 import { Mod } from "./models/Mod.model";
 import { ModType } from "./models/ModType.model";
+import { Location } from "./models/Location.model";
 Service.setBaseUrl(
   process.env.NODE_ENV === "production"
     ? "https://restaurant-server-288018.ue.r.appspot.com/"
@@ -20,6 +20,7 @@ class MainMobx {
   sides = new Store(Side, "sides");
   mods = new Store(Mod, "mods");
   modTypes = new Store(ModType, "modtypes");
+  locations = new Store(Location, "locations");
 
   constructor() {
     Socket.on("order", (order: any) => {
