@@ -18,7 +18,7 @@ Service.setBaseUrl(
 );
 
 class MainMobx {
-  @persist("object") @observable currentLocation = new Location();
+  @persist("object") @observable _currentLocation = new Location();
   orders = new Store(Order, "orders");
   categories = new Store(Category, "categories");
   items = new Store(Item, "items");
@@ -27,6 +27,14 @@ class MainMobx {
   modTypes = new Store(ModType, "modtypes");
   locations = new Store(Location, "locations");
   ready = false;
+
+  get currentLocation() {
+    return this._currentLocation;
+  }
+  set currentLocation(location: any) {
+    this._currentLocation = location;
+    this.getOrders();
+  }
 
   constructor() {
     this.getOrders();
