@@ -1,5 +1,6 @@
 <template lang="pug">
 v-container
+  v-row: v-col(sm=4): v-select(label="Location" dense outlined :items="MainStore.locations.objects" v-model="MainStore.currentLocation" item-text="name" return-object)
   h1 Orders
   v-card.pa-5.ma-5.justify-space-between.d-flex(v-for="order in MainStore.orders.objects" :key="order.id") 
     .order(v-for="item in order.items" :key="item.id") 

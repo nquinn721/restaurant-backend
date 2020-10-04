@@ -3,6 +3,7 @@ import { MainStore } from "../Main.mobx";
 
 export class Location extends Model {
   route = "location";
+  name = "";
 
   address = "";
   sundayStart = "";

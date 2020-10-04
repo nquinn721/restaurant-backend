@@ -3,7 +3,10 @@ import { computed } from "mobx";
 
 export class Order extends Model {
   route = "order";
-  getParams = { sort: "id,ASC", s: { status: { $ne: "complete" } } };
+  getParams = {
+    sort: "id,ASC",
+    s: { status: { $ne: "complete" } },
+  };
   status = "";
 
   @computed

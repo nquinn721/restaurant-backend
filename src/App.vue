@@ -1,47 +1,45 @@
 <template lang="pug">
 v-app
+  v-app-bar(app dark clipped-left)
+    v-app-bar-nav-icon(@click.stop='drawer = !drawer')
+    v-toolbar-title Application
   v-navigation-drawer(
-    v-model="drawer"
     app
-    floating 
-    fixed
-    persistent 
+    v-model="drawer"
+    clipped
     dark
     )
-    v-list(dense='')
+    v-list(nav dense)
       v-list-item(link to="/orders")
-        v-list-item-action
+        v-list-item-icon
           v-icon(size=14) far fa-shopping-cart
         v-list-item-content
           v-list-item-title Orders
       v-list-item(link to="/categories")
-        v-list-item-action
+        v-list-item-icon
           v-icon(size=14) far fa-clipboard
         v-list-item-content
           v-list-item-title Categories
       v-list-item(link to="/items")
-        v-list-item-action
+        v-list-item-icon
           v-icon(size=14) far fa-list
         v-list-item-content
           v-list-item-title Items
       v-list-item(link to="/sides")
-        v-list-item-action
+        v-list-item-icon
           v-icon(size=14) far fa-pizza
         v-list-item-content
           v-list-item-title Sides
       v-list-item(link to="/mods")
-        v-list-item-action
+        v-list-item-icon
           v-icon(size=14) far fa-paperclip
         v-list-item-content
           v-list-item-title Modifiers
       v-list-item(link to="/locations")
-        v-list-item-action
+        v-list-item-icon
           v-icon(size=14) far fa-building
         v-list-item-content
           v-list-item-title Locations
-  v-app-bar(app clipped-left dark)
-    v-app-bar-nav-icon(@click.stop='drawer = !drawer')
-    v-toolbar-title Application
   v-main
     router-view 
   v-footer(app='')
@@ -54,7 +52,7 @@ import { MainStore } from "./store/Main.mobx";
 export default {
   data() {
     return {
-      drawer: false
+      drawer: true
     };
   },
   computed: {
