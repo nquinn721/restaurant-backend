@@ -8,7 +8,7 @@ import { Side } from "./models/Side.model";
 import { Mod } from "./models/Mod.model";
 import { ModType } from "./models/ModType.model";
 import { Location } from "./models/Location.model";
-import { observable } from "mobx";
+import { action, observable } from "mobx";
 import { create, persist } from "mobx-persist";
 import localForage from "localforage";
 Service.setBaseUrl(
@@ -27,6 +27,11 @@ class MainMobx {
   modTypes = new Store(ModType, "modtypes");
   locations = new Store(Location, "locations");
   ready = false;
+
+  @persist("object") @observable user: any = {};
+  @observable isLoggedIn = false;
+  @observable isLoggingIn = false;
+  @observable loginError = false;
 
   get currentLocation() {
     return this._currentLocation;
@@ -49,6 +54,37 @@ class MainMobx {
       this.orders.model.getParams.s.location = this.currentLocation.id;
       this.orders.refreshData();
     } else setTimeout(this.getOrders.bind(this), 400);
+  }
+
+  @action
+  async login(creds: object) {
+    this.isLoggingIn = true;
+    const login = await Service.post("/auth/login", creds);
+    Service.setBearerToken(login.access_token);
+
+    localStorage.setItem("Authorization", login.access_token);
+    this.user = login.user;
+
+    localStorage.setItem("user", JSON.stringify(login.user));
+
+    this.isLoggedIn = true;
+    this.isLoggingIn = false;
+    if (login.error || login.logout) {
+      this.loginError = login.error || "";
+      this.isLoggedIn = false;
+    } else {
+      this.isLoggedIn = true;
+      this.user = login.user;
+    }
+  }
+
+  @action
+  logout() {
+    localStorage.removeItem("Authorization");
+    localStorage.removeItem("user");
+    this.isLoggedIn = false;
+    this.isLoggingIn = false;
+    this.user = {};
   }
 }
 
